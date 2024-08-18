@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Ucapan Lulus Kuliah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: "Alata", sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 600px
+        }
+
+        .banner {
+            background: url('assets/bg-2.png') no-repeat center center;
+            background-size: contain;
+            /* Mengatur gambar latar belakang agar mencakup seluruh elemen */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #FFB000;
+        }
+
+        /* .congrats-message {
+            font-size: 24px;
+            margin-bottom: 10px;
+        } */
+
+        .name {
+            font-size: 22px;
+            margin-bottom: 5px;
+            position: relative;
+            top: 24%;
+            left: 8%;
+            transition: left 1s ease-in-out;
+            letter-spacing: 1px;
+        }
+
+        .name .title {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .name.show-title {
+            left: 2%;
+            /* Posisi saat gelar muncul */
+        }
+
+        .name .title {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .name.show-title .title {
+            opacity: 1;
+        }
+
+        /* .thanksgiving-message {
+            font-size: 16px;
+            margin-bottom: 20px;
+        } */
+
+        button {
+            padding: 4px 8px;
+            font-size: 32px;
+            color: #000;
+            font-weight: bold;
+            background: transparent;
+            border: none;
+            /* font-family: "Courgette", cursive; */
+            font-family: "Oleo Script", system-ui;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            top: 42%;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+
+        button:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <!-- <h1 class="congrats-message">Selamat atas kelulusan S1!</h1> -->
+        <h2 class="name">
+            M. Haikal Arif Khairil<span class="title"> S.Kom</span>
+        </h2>
+        <!-- <p class="thanksgiving-message">Ucapan syukur atas rahmat dan karunia-Nya.</p> -->
+        <button onclick="showTitleAndConfetti()">Congratulation &#127881;</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function showTitleAndConfetti() {
+            showTitle();
+            launchConfetti();
+        }
+
+        function showTitle() {
+            const nameElement = document.querySelector('.name');
+            if (!nameElement.classList.contains('show-title')) {
+                nameElement.classList.add('show-title');
+                launchConfetti();
+            }
+        }
+
+        function launchConfetti() {
+            const duration = 5 * 1000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 }
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 }
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+    </script>
+</body>
+
+</html>
